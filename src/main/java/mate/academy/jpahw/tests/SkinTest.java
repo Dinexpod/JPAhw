@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity(name = "skin_tests")
@@ -29,7 +28,7 @@ public class SkinTest extends Test {
     public SkinTest() {
     }
 
-    public SkinTest(String name, Type type, LocalDateTime date, Double cost, String location, State state) {
+    public SkinTest(String name, Type type, LocalDateTime date, Double cost, String location, SkinTest.State state) {
         super(name, type, date);
         this.cost = cost;
         this.location = location;
@@ -78,7 +77,7 @@ public class SkinTest extends Test {
     public String toString() {
         return "SkinTest{" +
                 "cost=" + cost +
-                ", date=" + location +
+                ", location=" + location +
                 ", State=" + State +
                 '}';
     }

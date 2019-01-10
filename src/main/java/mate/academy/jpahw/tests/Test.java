@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity(name = "tests")
@@ -21,7 +20,7 @@ public class Test {
     private String name;
     @Column
     private Type type;
-    @Column
+    @Column(name = "date")
     private LocalDateTime localDate;
 
     public enum Type {
@@ -76,7 +75,7 @@ public class Test {
         return "Test{" +
                 "name='" + name + '\'' +
                 ", type=" + type +
-                ", location='" + localDate + '\'' +
+                ", date='" + localDate + '\'' +
                 '}';
     }
 }

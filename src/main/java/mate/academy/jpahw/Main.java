@@ -11,10 +11,7 @@ import mate.academy.jpahw.tests.Test;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -73,10 +70,10 @@ public class Main {
 
         PatientService patientService = new PatientService();
         List<Test> tests = patientService.getAllTests();
-        List<Test> tests1 = patientService.getAllTestsInDateRange(LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(1));
-        System.out.println(tests.toString());
-        System.out.println(tests1.toString());
-
+        List<Test> tests1 = patientService
+                .getAllTestsInDateRange(LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(1));
+        System.out.println(tests);
+        System.out.println(tests1);
     }
 
     private static void saveTest(Test test) {
@@ -84,13 +81,5 @@ public class Main {
         em.persist(test);
         em.flush();
         em.getTransaction().commit();
-    }
-
-    public static List<Test> getPatientByName() {
-        TypedQuery<Test> query =
-                em
-                        .createQuery("select p from tests p ", Test.class);
-
-        return query.getResultList();
     }
 }

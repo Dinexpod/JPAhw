@@ -27,7 +27,7 @@ public class BloodTest extends Test {
         NOT_EXECUTED
     }
 
-    public BloodTest(String name, Type type, LocalDateTime date, Double cost, String  location, BloodTest.State state) {
+    public BloodTest(String name, Type type, LocalDateTime date, Double cost, String location, BloodTest.State state) {
         super(name, type, date);
         this.cost = cost;
         this.location = location;
@@ -77,7 +77,7 @@ public class BloodTest extends Test {
     public String toString() {
         return "BloodTest{" +
                 "cost=" + cost +
-                ", date=" + location +
+                ", location=" + location +
                 ", State=" + State +
                 '}';
     }
