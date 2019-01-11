@@ -1,12 +1,10 @@
 package mate.academy.jpahw.tests;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity(name = "blood_tests")
@@ -21,11 +19,6 @@ public class BloodTest extends Test {
     private String location;
     @Column
     private State State;
-
-    public enum State {
-        EXECUTED,
-        NOT_EXECUTED
-    }
 
     public BloodTest(String name, Type type, LocalDateTime date, Double cost, String location, BloodTest.State state) {
         super(name, type, date);

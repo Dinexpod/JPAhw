@@ -29,6 +29,11 @@ public class Test {
         FOR_OLD
     }
 
+    public enum State {
+        EXECUTED,
+        NOT_EXECUTED
+    }
+
     public Test() {
     }
 

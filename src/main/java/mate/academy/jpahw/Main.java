@@ -14,6 +14,9 @@ import javax.persistence.Persistence;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static mate.academy.jpahw.acsessory.PhotometerAcsessory.PAcsessorySize.BIG;
+import static mate.academy.jpahw.acsessory.PhotometerAcsessory.PAcsessoryState.UNAPPLIED;
+
 public class Main {
     private static EntityManager em;
 
@@ -40,8 +43,8 @@ public class Main {
                 "ABS",
                 "DIDC",
                 1300.8,
-                PhotometerAcsessory.PAcsessorySize.BIG,
-                PhotometerAcsessory.PAcsessoryState.UNAPPLIED);
+                BIG,
+                UNAPPLIED);
 
         Test skinTest = photometr.turnOnAcsessory(photometerAcsessory).doTest(patient);
         saveTest(skinTest);

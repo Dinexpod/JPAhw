@@ -20,11 +20,6 @@ public class SkinTest extends Test {
     @Column
     private State State;
 
-    public enum State {
-        EXECUTED,
-        NOT_EXECUTED
-    }
-
     public SkinTest() {
     }
 
