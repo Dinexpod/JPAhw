@@ -44,7 +44,7 @@ public class Photometer extends Device {
         super.doTest(patient);
         System.out.print("by PHOTOMETER for " + patient.getName());
         SkinTest skinTest = createSkinTest();
-        System.out.println("\n" + skinTest.customToString());
+        System.out.println("\n" + skinTest.toString());
         return skinTest;
     }
 
@@ -122,10 +122,6 @@ public class Photometer extends Device {
 
     public void setCost(Double cost) {
         this.cost = cost;
-    }
-
-    public String customToString() {
-        return (super.toString() + "\n" + toString());
     }
 
     @Override

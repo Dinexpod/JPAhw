@@ -64,10 +64,6 @@ public class SkinTest extends Test {
         State = state;
     }
 
-    public String customToString() {
-        return (super.toString() + "\n" + toString());
-    }
-
     @Override
     public String toString() {
         return "SkinTest{" +
