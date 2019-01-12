@@ -34,16 +34,16 @@ public class Photometer extends Device {
     @OneToMany(mappedBy = "ownerPhotometer", fetch = FetchType.EAGER)
     protected List<PhotometerAcsessory> photometerAcsessories = new ArrayList<>(1);
 
-    @Override
-    public Test doTest(Patient patient) {
-        super.doTest(patient);
-        System.out.print("by PHOTOMETER for " + patient.getName());
-        SkinTest skinTest = createSkinTest();
-        System.out.println("\n" + skinTest.toString());
-        return skinTest;
-    }
+//    @Override
+//    public Test doTest(Patient patient) {
+//        super.doTest(patient);
+//        System.out.print("by PHOTOMETER for " + patient.getName());
+//        SkinTest skinTest = createSkinTest();
+//        System.out.println("\n" + skinTest.toString());
+//        return skinTest;
+//    }
 
-    private SkinTest createSkinTest() {
+    public static SkinTest createSkinTest() {
         return new SkinTest("SkinTest",
                 Test.Type.FOR_ADULT,
                 LocalDateTime.now(),

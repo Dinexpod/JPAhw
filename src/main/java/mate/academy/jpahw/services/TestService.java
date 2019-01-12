@@ -1,4 +1,9 @@
 package mate.academy.jpahw.services;
 
-public interface TestService {
+import mate.academy.jpahw.models.patients.Patient;
+import mate.academy.jpahw.models.tests.Test;
+
+import java.util.List;
+
+public interface TestService{
 }
