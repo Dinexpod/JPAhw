@@ -44,7 +44,7 @@ public class UltrasonicDevice extends Device {
         super.doTest(patient);
         System.out.print("by ULTRASONIC DEVICE!");
         BloodTest bloodTest = createBloodTest(em);
-        System.out.println("\n" + bloodTest.customToString());
+        System.out.println("\n" + bloodTest.toString());
         return bloodTest;
     }
 
@@ -123,10 +123,6 @@ public class UltrasonicDevice extends Device {
 
     public void setCost(Double cost) {
         this.cost = cost;
-    }
-
-    public String customToString() {
-        return (super.toString() + "\n" + toString());
     }
 
     @Override
