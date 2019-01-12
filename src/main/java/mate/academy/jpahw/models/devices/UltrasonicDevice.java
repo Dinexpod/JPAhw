@@ -1,34 +1,29 @@
-package mate.academy.jpahw.devices;
+package mate.academy.jpahw.models.devices;
 
 import mate.academy.jpahw.Main;
-import mate.academy.jpahw.acsessory.UltrasonicAcsessory;
-import mate.academy.jpahw.patients.Patient;
-import mate.academy.jpahw.tests.BloodTest;
-import mate.academy.jpahw.tests.Test;
+import mate.academy.jpahw.models.acsessory.UltrasonicAcsessory;
+import mate.academy.jpahw.models.patients.Patient;
+import mate.academy.jpahw.models.tests.BloodTest;
+import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static mate.academy.jpahw.acsessory.UltrasonicAcsessory.UAcsessoryState.APPLIED;
-import static mate.academy.jpahw.acsessory.UltrasonicAcsessory.UAcsessoryState.UNAPPLIED;
+import static mate.academy.jpahw.models.acsessory.UltrasonicAcsessory.UAcsessoryState.APPLIED;
+import static mate.academy.jpahw.models.acsessory.UltrasonicAcsessory.UAcsessoryState.UNAPPLIED;
 
-@Entity(name = "Ultrasonic_devices")
+@Entity
+@Table(name = "Ultrasonic_devices")
 public class UltrasonicDevice extends Device {
     private static EntityManager em = Main.getEm();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "ultrasonic_device_id")
-    private Integer id;
     @Column
     private Integer weight;
     @Column(name = "qr_code")
@@ -89,16 +84,6 @@ public class UltrasonicDevice extends Device {
         em.persist(this);
         em.flush();
         em.getTransaction().commit();
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Integer getWeight() {

@@ -1,18 +1,13 @@
-package mate.academy.jpahw.tests;
+package mate.academy.jpahw.models.tests;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Entity(name = "skin_tests")
+@Entity
+@Table(name = "skin_tests")
 public class SkinTest extends Test {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "skin_test_id")
-    private Integer id;
     @Column
     private Double cost;
     @Column
@@ -28,16 +23,6 @@ public class SkinTest extends Test {
         this.cost = cost;
         this.location = location;
         State = state;
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Double getCost() {

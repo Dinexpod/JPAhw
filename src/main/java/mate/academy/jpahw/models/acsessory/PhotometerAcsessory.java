@@ -1,23 +1,18 @@
-package mate.academy.jpahw.acsessory;
+package mate.academy.jpahw.models.acsessory;
 
-import mate.academy.jpahw.devices.Photometer;
+import mate.academy.jpahw.models.devices.Photometer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name = "photometer_acsessories")
+@Entity
+@Table(name = "photometer_acsessories")
 public class PhotometerAcsessory extends Acsessory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "photometer_acsessory_id")
-    private Integer id;
     @Column
     private Double cost;
     @Column
@@ -47,16 +42,6 @@ public class PhotometerAcsessory extends Acsessory {
     }
 
     public PhotometerAcsessory() {
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Double getCost() {

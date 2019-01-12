@@ -1,18 +1,13 @@
-package mate.academy.jpahw.tests;
+package mate.academy.jpahw.models.tests;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Entity(name = "blood_tests")
+@Entity
+@Table(name = "blood_tests")
 public class BloodTest extends Test {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "blood_test_id")
-    private Integer id;
     @Column
     private Double cost;
     @Column
@@ -28,14 +23,6 @@ public class BloodTest extends Test {
     }
 
     public BloodTest() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Double getCost() {

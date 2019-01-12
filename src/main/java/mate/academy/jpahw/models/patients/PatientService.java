@@ -1,7 +1,7 @@
-package mate.academy.jpahw.patients;
+package mate.academy.jpahw.models.patients;
 
 import mate.academy.jpahw.Main;
-import mate.academy.jpahw.tests.Test;
+import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
