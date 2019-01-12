@@ -1,4 +1,4 @@
-package mate.academy.jpahw.tests;
+package mate.academy.jpahw.models.tests;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,9 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Entity(name = "tests")
+@Entity
+@Table(name = "tests")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Test {
     @Id

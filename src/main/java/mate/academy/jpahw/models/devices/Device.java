@@ -1,9 +1,8 @@
-package mate.academy.jpahw.devices;
+package mate.academy.jpahw.models.devices;
 
 import mate.academy.jpahw.Main;
-import mate.academy.jpahw.acsessory.Acsessory;
-import mate.academy.jpahw.patients.Patient;
-import mate.academy.jpahw.tests.Test;
+import mate.academy.jpahw.models.patients.Patient;
+import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
-@Entity(name = "devices")
+@Entity
+@Table(name = "devices")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Device {
     private static EntityManager em = Main.getEm();
@@ -86,7 +87,7 @@ public class Device {
     public String toString() {
         return "Device{" +
                 "name='" + name + '\'' +
-                ", model='" + model + '\'' +
+                ", models='" + model + '\'' +
                 ", brand='" + brand + '\'' +
                 ", avaliableAcsessory=" + avaliableAcsessory +
                 '}';

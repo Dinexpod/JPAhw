@@ -1,4 +1,4 @@
-package mate.academy.jpahw.patients;
+package mate.academy.jpahw.models.patients;
 
 import mate.academy.jpahw.Main;
 
@@ -10,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import java.util.Date;
 
-@Entity(name = "patient")
+@Entity
+@Table(name = "patient")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Patient {
     private static EntityManager em = Main.getEm();

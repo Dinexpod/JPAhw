@@ -1,12 +1,12 @@
 package mate.academy.jpahw;
 
-import mate.academy.jpahw.acsessory.PhotometerAcsessory;
-import mate.academy.jpahw.acsessory.UltrasonicAcsessory;
-import mate.academy.jpahw.devices.Photometer;
-import mate.academy.jpahw.devices.UltrasonicDevice;
-import mate.academy.jpahw.patients.Patient;
-import mate.academy.jpahw.patients.PatientService;
-import mate.academy.jpahw.tests.Test;
+import mate.academy.jpahw.models.acsessory.PhotometerAcsessory;
+import mate.academy.jpahw.models.acsessory.UltrasonicAcsessory;
+import mate.academy.jpahw.models.devices.Photometer;
+import mate.academy.jpahw.models.devices.UltrasonicDevice;
+import mate.academy.jpahw.models.patients.Patient;
+import mate.academy.jpahw.models.patients.PatientService;
+import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,8 +14,8 @@ import javax.persistence.Persistence;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static mate.academy.jpahw.acsessory.PhotometerAcsessory.PAcsessorySize.BIG;
-import static mate.academy.jpahw.acsessory.PhotometerAcsessory.PAcsessoryState.UNAPPLIED;
+import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessorySize.BIG;
+import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessoryState.UNAPPLIED;
 
 public class Main {
     private static EntityManager em;

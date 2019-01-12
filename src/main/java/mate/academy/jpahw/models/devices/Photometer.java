@@ -1,34 +1,29 @@
-package mate.academy.jpahw.devices;
+package mate.academy.jpahw.models.devices;
 
 import mate.academy.jpahw.Main;
-import mate.academy.jpahw.acsessory.PhotometerAcsessory;
-import mate.academy.jpahw.patients.Patient;
-import mate.academy.jpahw.tests.SkinTest;
-import mate.academy.jpahw.tests.Test;
+import mate.academy.jpahw.models.acsessory.PhotometerAcsessory;
+import mate.academy.jpahw.models.patients.Patient;
+import mate.academy.jpahw.models.tests.SkinTest;
+import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static mate.academy.jpahw.acsessory.PhotometerAcsessory.PAcsessoryState.APPLIED;
-import static mate.academy.jpahw.acsessory.PhotometerAcsessory.PAcsessoryState.UNAPPLIED;
+import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessoryState.APPLIED;
+import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessoryState.UNAPPLIED;
 
-@Entity(name = "photomeeters")
+@Entity
+@Table(name = "photomeeters")
 public class Photometer extends Device {
     private static EntityManager em = Main.getEm();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "photometr_id")
-    private Integer id;
     @Column
     private Integer weight;
     @Column(name = "qr_code")
@@ -88,16 +83,6 @@ public class Photometer extends Device {
         em.persist(this);
         em.flush();
         em.getTransaction().commit();
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Integer getWeight() {

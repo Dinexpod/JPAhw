@@ -1,4 +1,4 @@
-package mate.academy.jpahw.acsessory;
+package mate.academy.jpahw.models.acsessory;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
-@Entity(name = "acsessories")
+@Entity
+@Table(name = "acsessories")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Acsessory {
     @Id
@@ -67,7 +69,7 @@ public class Acsessory {
     public String toString() {
         return "Acsessory{" +
                 ", name='" + name + '\'' +
-                ", model='" + model + '\'' +
+                ", models='" + model + '\'' +
                 ", brand='" + brand + '\'' +
                 '}';
     }
