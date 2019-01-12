@@ -34,14 +34,14 @@ public class UltrasonicDevice extends Device {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "ownerUltrasonic")
     private List<UltrasonicAcsessory> ultrasonicAcsessories = new ArrayList<>(1);
 
-    @Override
-    public Test doTest(Patient patient) {
-        super.doTest(patient);
-        System.out.print("by ULTRASONIC DEVICE!");
-        BloodTest bloodTest = createBloodTest(em);
-        System.out.println("\n" + bloodTest.toString());
-        return bloodTest;
-    }
+//    @Override
+//    public Test doTest(Patient patient) {
+//        super.doTest(patient);
+//        System.out.print("by ULTRASONIC DEVICE!");
+//        BloodTest bloodTest = createBloodTest(em);
+//        System.out.println("\n" + bloodTest.toString());
+//        return bloodTest;
+//    }
 
     private BloodTest createBloodTest(EntityManager em) {
         return new BloodTest("UltrasonicTest",

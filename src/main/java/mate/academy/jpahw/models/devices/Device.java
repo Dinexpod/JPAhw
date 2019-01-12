@@ -32,10 +32,10 @@ public class Device {
     private String brand;
     boolean avaliableAcsessory = false;
 
-    public Test doTest(Patient patient) {
-        System.out.print("do test ");
-        return new Test();
-    }
+//    public Test doTest(Patient patient) {
+//        System.out.print("do test ");
+//        return new Test();
+//    }
 
     public Device() {
     }
