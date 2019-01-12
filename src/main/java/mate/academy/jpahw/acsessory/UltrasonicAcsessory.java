@@ -83,11 +83,6 @@ public class UltrasonicAcsessory extends Acsessory {
         State = state;
     }
 
-
-    public String customToString() {
-        return (super.toString() + "\n" + toString());
-    }
-
     @Override
     public String toString() {
         return "UltrasonicAcsessory{" +

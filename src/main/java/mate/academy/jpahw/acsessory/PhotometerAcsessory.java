@@ -83,10 +83,6 @@ public class PhotometerAcsessory extends Acsessory {
         this.state = state;
     }
 
-    public String customToString() {
-        return (super.toString() + "\n" + toString());
-    }
-
     @Override
     public String toString() {
         return "PhotometerAcsessory{" +
