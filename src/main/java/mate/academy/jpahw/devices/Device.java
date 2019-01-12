@@ -1,6 +1,7 @@
 package mate.academy.jpahw.devices;
 
 import mate.academy.jpahw.Main;
+import mate.academy.jpahw.acsessory.Acsessory;
 import mate.academy.jpahw.patients.Patient;
 import mate.academy.jpahw.tests.Test;
 
@@ -29,16 +30,6 @@ public class Device {
     @Column
     private String brand;
     boolean avaliableAcsessory = false;
-
-    protected Device turnOnAcsessory(Object acsessory) {
-        this.avaliableAcsessory = true;
-        return this;
-    }
-
-    protected Device turnOffAcsessory(Object acsessory) {
-        this.avaliableAcsessory = false;
-        return this;
-    }
 
     public Test doTest(Patient patient) {
         System.out.print("do test ");

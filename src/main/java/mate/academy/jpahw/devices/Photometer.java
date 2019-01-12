@@ -57,20 +57,20 @@ public class Photometer extends Device {
                 SkinTest.State.EXECUTED);
     }
 
-    @Override
     public Device turnOnAcsessory(Object acsessory) {
         PhotometerAcsessory photometerAcsessory = (PhotometerAcsessory) acsessory;
         photometerAcsessories.add(photometerAcsessory);
         photometerAcsessory.setState(APPLIED);
+        avaliableAcsessory = true;
         System.out.println("Photometer acsessory turned ON");
         return this;
     }
 
-    @Override
     public Device turnOffAcsessory(Object acsessory) {
         PhotometerAcsessory photometerAcsessory = (PhotometerAcsessory) acsessory;
         photometerAcsessories.remove(photometerAcsessory);
         photometerAcsessory.setState(UNAPPLIED);
+        avaliableAcsessory = false;
         System.out.println("Photometer acsessory turned OFF");
         return this;
     }

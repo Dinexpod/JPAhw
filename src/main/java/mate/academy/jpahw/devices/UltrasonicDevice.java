@@ -57,20 +57,20 @@ public class UltrasonicDevice extends Device {
                 BloodTest.State.EXECUTED);
     }
 
-    @Override
     public Device turnOnAcsessory(Object acsessory) {
         UltrasonicAcsessory ultrasonicAcsessory = (UltrasonicAcsessory) acsessory;
         ultrasonicAcsessories.add(ultrasonicAcsessory);
         ultrasonicAcsessory.setState(APPLIED);
+        avaliableAcsessory = true;
         System.out.println("Ultrasonic acsessory turned ON");
         return this;
     }
 
-    @Override
     public Device turnOffAcsessory(Object acsessory) {
         UltrasonicAcsessory ultrasonicAcsessory = (UltrasonicAcsessory) acsessory;
         ultrasonicAcsessories.add(ultrasonicAcsessory);
         ultrasonicAcsessory.setState(UNAPPLIED);
+        avaliableAcsessory = false;
         System.out.println("Ultrasonic acsessory turned OFF");
         return this;
     }
