@@ -6,4 +6,6 @@ import mate.academy.jpahw.models.tests.Test;
 import java.util.List;
 
 public interface TestService{
+    Test createTest(Test test);
+
 }

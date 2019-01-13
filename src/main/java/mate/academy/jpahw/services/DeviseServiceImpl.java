@@ -12,7 +12,7 @@ public class DeviseServiceImpl implements DeviseService {
     }
 
     @Override
-    public Test doTest(Patient patient) {
-        return this.deviceDao.doTest(patient);
+    public Test doTest(Test test, Patient patient) {
+        return this.deviceDao.doTest(test, patient);
     }
 }

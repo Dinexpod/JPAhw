@@ -9,6 +9,7 @@ import mate.academy.jpahw.models.patients.Patient;
 import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class DeviceDaoImpl extends AbstractDao<Device, Long> implements DeviceDao {
     public DeviceDaoImpl(EntityManager em, Class<Device> deviceClass) {
@@ -16,10 +17,27 @@ public class DeviceDaoImpl extends AbstractDao<Device, Long> implements DeviceDa
     }
 
     @Override
-    public Test doTest(Patient patient) {
-        TestDao testDaoImpl = new TestDaoImpl(em, Test.class);
-        System.out.println("Doing test ...");
-        Test test = testDaoImpl.createTest(patient);
-        return test;
+    public Device save(Device entity) {
+        return super.save(entity);
+    }
+
+    @Override
+    public Device findById(Long aLong) {
+        return super.findById(aLong);
+    }
+
+    @Override
+    public List<Device> findAll() {
+        return super.findAll();
+    }
+
+    @Override
+    public void delete(Device entity) {
+        super.delete(entity);
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+        super.deleteById(aLong);
     }
 }

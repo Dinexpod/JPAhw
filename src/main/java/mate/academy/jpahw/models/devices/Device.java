@@ -18,8 +18,6 @@ import javax.persistence.Table;
 @Table(name = "devices")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Device {
-    private static EntityManager em = Main.getEm();
-
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "device_id")
@@ -32,23 +30,13 @@ public class Device {
     private String brand;
     boolean avaliableAcsessory = false;
 
-//    public Test doTest(Patient patient) {
-//        System.out.print("do test ");
-//        return new Test();
-//    }
-
     public Device() {
     }
 
-    public Device(String name, String model, String brand, EntityManager em) {
+    public Device(String name, String model, String brand) {
         this.name = name;
         this.model = model;
         this.brand = brand;
-
-        em.getTransaction().begin();
-        em.persist(this);
-        em.flush();
-        em.getTransaction().commit();
     }
 
     public Integer getId() {

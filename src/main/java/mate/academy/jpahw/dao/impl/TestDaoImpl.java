@@ -7,6 +7,7 @@ import mate.academy.jpahw.models.tests.Test;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static mate.academy.jpahw.models.tests.Test.State.EXECUTED;
 
@@ -16,13 +17,27 @@ public class TestDaoImpl extends AbstractDao<Test, Long> implements TestDao {
     }
 
     @Override
-    public Test createTest(Patient patient) {
-        Test test = new Test();
+    public Test save(Test entity) {
+        return super.save(entity);
+    }
 
-        em.getTransaction().begin();
-        em.persist(test);
-        em.getTransaction().commit();
+    @Override
+    public Test findById(Long aLong) {
+        return super.findById(aLong);
+    }
 
-        return test;
+    @Override
+    public List<Test> findAll() {
+        return super.findAll();
+    }
+
+    @Override
+    public void delete(Test entity) {
+        super.delete(entity);
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+        super.deleteById(aLong);
     }
 }

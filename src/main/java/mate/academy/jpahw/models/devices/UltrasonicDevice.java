@@ -22,8 +22,6 @@ import static mate.academy.jpahw.models.acsessory.UltrasonicAcsessory.UAcsessory
 @Entity
 @Table(name = "Ultrasonic_devices")
 public class UltrasonicDevice extends Device {
-    private static EntityManager em = Main.getEm();
-
     @Column
     private Integer weight;
     @Column(name = "qr_code")
@@ -35,22 +33,13 @@ public class UltrasonicDevice extends Device {
     private List<UltrasonicAcsessory> ultrasonicAcsessories = new ArrayList<>(1);
 
 //    @Override
-//    public Test doTest(Patient patient) {
-//        super.doTest(patient);
-//        System.out.print("by ULTRASONIC DEVICE!");
-//        BloodTest bloodTest = createBloodTest(em);
-//        System.out.println("\n" + bloodTest.toString());
-//        return bloodTest;
-//    }
-
-    private BloodTest createBloodTest(EntityManager em) {
-        return new BloodTest("UltrasonicTest",
-                Test.Type.FOR_ADULT,
-                LocalDateTime.now(),
-                1600.0,
-                "kjefh",
-                BloodTest.State.EXECUTED);
-    }
+////    public Test doTest(Patient patient) {
+////        super.doTest(patient);
+////        System.out.print("by ULTRASONIC DEVICE!");
+////        BloodTest bloodTest = createBloodTest(em);
+////        System.out.println("\n" + bloodTest.toString());
+////        return bloodTest;
+////    }
 
     public Device turnOnAcsessory(Object acsessory) {
         UltrasonicAcsessory ultrasonicAcsessory = (UltrasonicAcsessory) acsessory;
@@ -74,16 +63,11 @@ public class UltrasonicDevice extends Device {
 
     }
 
-    public UltrasonicDevice(String name, String model, String brand, Integer weight, String qrCode, Double cost, EntityManager em) {
-        super(name, model, brand, em);
+    public UltrasonicDevice(String name, String model, String brand, Integer weight, String qrCode, Double cost) {
+        super(name, model, brand);
         this.weight = weight;
         this.qrCode = qrCode;
         this.cost = cost;
-
-        em.getTransaction().begin();
-        em.persist(this);
-        em.flush();
-        em.getTransaction().commit();
     }
 
     public Integer getWeight() {
