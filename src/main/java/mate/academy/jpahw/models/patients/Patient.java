@@ -17,8 +17,6 @@ import java.util.Date;
 @Table(name = "patient")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Patient {
-    private static EntityManager em = Main.getEm();
-
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "patient_id")
@@ -33,15 +31,10 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String name, String lastName, EntityManager em) {
+    public Patient(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
         date = new Date();
-
-        em.getTransaction().begin();
-        em.persist(this);
-        em.flush();
-        em.getTransaction().commit();
     }
 
     public int getId() {

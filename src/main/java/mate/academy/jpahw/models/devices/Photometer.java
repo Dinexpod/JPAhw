@@ -22,8 +22,6 @@ import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessory
 @Entity
 @Table(name = "photomeeters")
 public class Photometer extends Device {
-    private static EntityManager em = Main.getEm();
-
     @Column
     private Integer weight;
     @Column(name = "qr_code")
@@ -42,15 +40,6 @@ public class Photometer extends Device {
 //        System.out.println("\n" + skinTest.toString());
 //        return skinTest;
 //    }
-
-    public static SkinTest createSkinTest() {
-        return new SkinTest("SkinTest",
-                Test.Type.FOR_ADULT,
-                LocalDateTime.now(),
-                1200.0,
-                "dsjkf",
-                SkinTest.State.EXECUTED);
-    }
 
     public Device turnOnAcsessory(Object acsessory) {
         PhotometerAcsessory photometerAcsessory = (PhotometerAcsessory) acsessory;
@@ -73,16 +62,12 @@ public class Photometer extends Device {
     public Photometer() {
     }
 
-    public Photometer(String name, String model, String brand, Integer weight, String qrCode, Double cost, EntityManager em) {
-        super(name, model, brand, em);
+    public Photometer(String name, String model, String brand, Integer weight, String qrCode, Double cost) {
+        super(name, model, brand);
         this.weight = weight;
         this.qrCode = qrCode;
         this.cost = cost;
 
-        em.getTransaction().begin();
-        em.persist(this);
-        em.flush();
-        em.getTransaction().commit();
     }
 
     public Integer getWeight() {
