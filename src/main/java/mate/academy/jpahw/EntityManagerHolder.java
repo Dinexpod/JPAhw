@@ -7,16 +7,16 @@ import javax.persistence.Persistence;
 public class EntityManagerHolder {
     protected static EntityManager em;
 
-    private EntityManagerHolder() {
+    static {
+        EntityManagerFactory emf = Persistence
+                .createEntityManagerFactory("PatientPU");
+        em = emf.createEntityManager();
     }
 
     public static EntityManager getEm() {
         return em;
     }
 
-    static {
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("PatientPU");
-        em = emf.createEntityManager();
+    private EntityManagerHolder() {
     }
 }

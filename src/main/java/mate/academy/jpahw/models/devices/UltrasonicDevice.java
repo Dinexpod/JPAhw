@@ -15,7 +15,6 @@ public class UltrasonicDevice extends Device {
     private Double cost;
 
     public UltrasonicDevice() {
-
     }
 
     public UltrasonicDevice(String name, String model, String brand, Integer weight, String qrCode, Double cost) {

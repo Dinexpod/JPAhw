@@ -19,19 +19,19 @@ public class FactoryService {
         em = EntityManagerHolder.getEm();
     }
 
-    public TestService getTestService() {
+    public static TestService getTestService() {
         return new TestServiceImpl(new TestDaoImpl(em, Test.class));
     }
 
-    public DeviseService deviseService() {
+    public static DeviseService getDeviseService() {
         return new DeviseServiceImpl(new DeviceDaoImpl(em, Device.class));
     }
 
-    public AcsessoryService acsessoryService() {
+    public static AcsessoryService getAcsessoryService() {
         return new AcsessoryServiceImpl(new AcsessoryDaoImpl(em, Acsessory.class));
     }
 
-    public PatientService patientService() {
+    public static PatientService getPatientService() {
         return new PatientServiceImpl(new PatientDaoImpl(em, Patient.class));
     }
 }

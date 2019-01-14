@@ -5,24 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "patient")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "patient_id")
+    private Long id;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "last_name")
-    String lastName;
+    private String lastName;
     @Column(name = "date")
-    Date date;
+    LocalDateTime date;
 
     public Patient() {
     }
@@ -30,7 +28,7 @@ public class Patient {
     public Patient(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
-        date = new Date();
+        date = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -57,11 +55,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

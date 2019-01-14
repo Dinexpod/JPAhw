@@ -18,5 +18,9 @@ public interface DeviseService {
 
     void deleteById(Long id);
 
-    Test doTest(Test test, Patient patient, Acsessory acsessory);
+    Test doTest(Test test, Patient patient, Device device);
+
+    void turnOnAcsessory(Acsessory acsessory, Device device);
+
+    void turnOffAcsessory(Acsessory acsessory, Device device);
 }
