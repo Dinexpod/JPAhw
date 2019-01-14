@@ -12,12 +12,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tests")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "test_id")
-    private Integer id;
+    private Long id;
     @Column
     private String name;
     @Column
@@ -65,11 +64,11 @@ public class Test {
         this.nameOfPatient = nameOfPatient;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -100,9 +99,12 @@ public class Test {
     @Override
     public String toString() {
         return "Test{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", type=" + type +
-                ", date='" + localDate + '\'' +
+                ", localDate=" + localDate +
+                ", nameOfPatient='" + nameOfPatient + '\'' +
+                ", nameOfAcsessory='" + nameOfAcsessory + '\'' +
                 '}';
     }
 }

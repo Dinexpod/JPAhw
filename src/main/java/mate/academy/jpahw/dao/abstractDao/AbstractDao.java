@@ -20,14 +20,14 @@ public abstract class AbstractDao<T, ID> implements CrudDao<T, ID> {
         em.getTransaction().begin();
         em.persist(entity);
         em.getTransaction().commit();
-        ID id = (ID) em.createQuery("select max(e.id) from " + tClass.getName() + " e", tClass);
+        ID id = (ID) em.createQuery("select max(e.id) from " + tClass.getName() + " e").getSingleResult();
         return findById(id);
     }
 
     @Override
     public T findById(ID id) {
         em.getTransaction().begin();
-        T t =  em.find(tClass, id);
+        T t = em.find(tClass, id);
         em.getTransaction().commit();
         return t;
     }

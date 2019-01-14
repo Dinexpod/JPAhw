@@ -1,12 +1,7 @@
 package mate.academy.jpahw.models.devices;
 
-import mate.academy.jpahw.Main;
-import mate.academy.jpahw.models.patients.Patient;
-import mate.academy.jpahw.models.tests.Test;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,19 +11,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "devices")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Device {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "device_id")
-    private Integer id;
+    private Long id;
     @Column
     private String name;
     @Column
     private String model;
     @Column
     private String brand;
-    boolean avaliableAcsessory = false;
 
     public Device() {
     }
@@ -39,11 +32,11 @@ public class Device {
         this.brand = brand;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -74,10 +67,10 @@ public class Device {
     @Override
     public String toString() {
         return "Device{" +
-                "name='" + name + '\'' +
-                ", models='" + model + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", model='" + model + '\'' +
                 ", brand='" + brand + '\'' +
-                ", avaliableAcsessory=" + avaliableAcsessory +
                 '}';
     }
 }

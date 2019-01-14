@@ -1,10 +1,7 @@
 package mate.academy.jpahw.models.patients;
 
-import mate.academy.jpahw.Main;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,12 +12,11 @@ import java.util.Date;
 
 @Entity
 @Table(name = "patient")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "patient_id")
-    int id;
+    Long id;
     @Column(name = "name")
     String name;
     @Column(name = "last_name")
@@ -37,11 +33,11 @@ public class Patient {
         date = new Date();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

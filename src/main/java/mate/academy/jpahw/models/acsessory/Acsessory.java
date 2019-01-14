@@ -15,8 +15,7 @@ import javax.persistence.Table;
 public class Acsessory {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "acsessory_id")
-    private Integer id;
+    private Long id;
     @Column
     private String name;
     @Column
@@ -33,11 +32,11 @@ public class Acsessory {
         this.brand = brand;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
