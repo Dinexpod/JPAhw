@@ -18,5 +18,5 @@ public interface DeviseService {
 
     void deleteById(Long id);
 
-    Test doTest(Test test, Patient patient);
+    Test doTest(Test test, Patient patient, Acsessory acsessory);
 }
