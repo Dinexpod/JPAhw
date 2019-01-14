@@ -1,6 +1,7 @@
 package mate.academy.jpahw.services;
 
 import mate.academy.jpahw.dao.TestDao;
+import mate.academy.jpahw.models.devices.Device;
 import mate.academy.jpahw.models.patients.Patient;
 import mate.academy.jpahw.models.tests.Test;
 
@@ -13,8 +14,34 @@ public class TestServiceImpl implements TestService {
         this.testDao = testDao;
     }
 
+
+    @Override
+    public Test save(Test test) {
+        return this.testDao.save(test);
+    }
+
+    @Override
+    public Test findById(Long id) {
+        return this.testDao.findById(id);
+    }
+
+    @Override
+    public List<Test> findAll() {
+        return this.testDao.findAll();
+    }
+
+    @Override
+    public void delete(Test test) {
+        this.testDao.delete(test);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        this.testDao.deleteById(id);
+    }
+
     @Override
     public Test createTest(Test test) {
-        return this.testDao.save(test);
+        return  this.testDao.crea;
     }
 }
