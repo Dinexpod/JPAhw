@@ -21,6 +21,11 @@ import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessory
 
 public class Main {
     public static void main(String[] args) {
+//      CREATE ALL NEEDS SERVICES (factory creates examples classes)
+        TestService testService = FactoryService.getTestService();
+        DeviseService deviseService = FactoryService.getDeviseService();
+        AcsessoryService acsessoryService = FactoryService.getAcsessoryService();
+        PatientService patientService = FactoryService.getPatientService();
 
 //      CREATE ALL NEEDS INSTRUMENTS AND PERSONS
         Test skinTest = new SkinTest("SkinTest",
@@ -73,14 +78,6 @@ public class Main {
                 UltrasonicAcsessory.UAcsessorySize.BIG,
                 UltrasonicAcsessory.UAcsessoryState.UNAPPLIED);
 
-//      CREATE ALL NEEDS SERVICES (factory creates examples classes)
-        FactoryService factory = new FactoryService();
-
-        TestService testService = factory.getTestService();
-        DeviseService deviseService = factory.deviseService();
-        AcsessoryService acsessoryService = factory.acsessoryService();
-        PatientService patientService = factory.patientService();
-
 //      SAVE ALL NEEDS INSTRUMENTS AND PERSONS
         testService.save(skinTest);
 
@@ -95,14 +92,18 @@ public class Main {
         acsessoryService.save(ultrasonicAcsessory);
 
         patientService.save(tony);
-
+//
         patientService.save(jack);
 
 //      DO TESTS FROM SOME PATIENTS USING DEVICE AND IT'S EQUIPMENT END OUT INFO ABOUT TESTS
-        Test skinTestTmp = deviseService.doTest(skinTest, tony, ultrasonicAcsessory);
+        deviseService.turnOnAcsessory(photometerAcsessory, photometr);
+        Test skinTestTmp = deviseService.doTest(skinTest, tony, photometr);
+        testService.save(skinTest);
         System.out.println(skinTestTmp.toString());
 
-        Test bloodTestTmp = deviseService.doTest(bloodTest, jack, photometerAcsessory);
+        deviseService.turnOnAcsessory(ultrasonicAcsessory, ultrasonicDevice);
+        Test bloodTestTmp = deviseService.doTest(bloodTest, jack, ultrasonicDevice);
+        testService.save(bloodTest);
         System.out.println(bloodTestTmp.toString());
 
 //      DO METHODS "GET ALL TESTS" AND "GET ALL TESTS BY SOME DATA RANGE"

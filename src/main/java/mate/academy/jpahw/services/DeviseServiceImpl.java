@@ -41,7 +41,24 @@ public class DeviseServiceImpl implements DeviseService {
     }
 
     @Override
-    public Test doTest(Test test, Patient patient, Acsessory acsessory) {
-        return this.deviceDao.doTest(test, patient, acsessory);
+    public Test doTest(Test test, Patient patient, Device device) {
+        System.out.println("Doing test for " + patient.getName() + device.getAcsessories().toString() + " acsessories ...");
+        test.setNameOfPatient(patient.getName());
+        test.setNameOfAcsessory(device.getAcsessories().toString());
+        return test;
+    }
+
+    @Override
+    public void turnOnAcsessory(Acsessory acsessory, Device device) {
+        acsessory.setOwnerAcsessory(device);
+        device.addAcsessory(acsessory);
+        System.out.println("Acsessory turned on!");
+    }
+
+    @Override
+    public void turnOffAcsessory(Acsessory acsessory, Device device) {
+        acsessory.setOwnerAcsessory(null);
+        device.getAcsessories().remove(acsessory);
+        System.out.println("Acsessory turned off!");
     }
 }
