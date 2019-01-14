@@ -36,6 +36,8 @@ import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessory
 
 public class Main {
     public static void main(String[] args) {
+
+//      CREATE ALL NEEDS INSTRUMENTS AND PERSONS
         Test skinTest = new SkinTest("SkinTest",
                 Test.Type.FOR_ADULT,
                 LocalDateTime.now(),
@@ -51,6 +53,7 @@ public class Main {
                 BloodTest.State.EXECUTED);
 
         Patient patient = new Patient("Tony", "Lev");
+
         Patient patient1 = new Patient("Jack", "Bond");
 
         Photometer photometr = new Photometer(
@@ -85,20 +88,22 @@ public class Main {
                 UltrasonicAcsessory.UAcsessorySize.BIG,
                 UltrasonicAcsessory.UAcsessoryState.UNAPPLIED);
 
-        TestService testService = new TestServiceImpl(new TestDaoImpl(em, Test.class));
-        testService.
-        TestDao testDao = new TestDaoImpl(em, Test.class);
-        DeviceDao deviceDao =  new DeviceDaoImpl(em, Device.class);
-        AcsessoryDao acsessoryDao = new AcsessoryDaoImpl(em, Acsessory.class);
+        TestService testService =
+                new TestServiceImpl(new TestDaoImpl(em, Test.class));
+        DeviseService deviseService =
+                new DeviseServiceImpl(new DeviceDaoImpl(em, Device.class));
+        AcsessoryService acsessoryService =
+                new AcsessoryServiceImpl(new AcsessoryDaoImpl(em, Acsessory.class));
 
-        testDao.save(skinTest);
-        testDao.save(bloodTest);
+//      SAVE ALL NEEDS INSTRUMENTS AND PERSONS
+        testService.save(skinTest);
+        testService.save(bloodTest);
 
-        deviceDao.save(photometr);
-        deviceDao.save(ultrasonicDevice);
+        deviseService.save(photometr);
+        deviseService.save(ultrasonicDevice);
 
-        acsessoryDao.save(photometerAcsessory);
-        acsessoryDao.save(ultrasonicAcsessory);
+        acsessoryService.save(photometerAcsessory);
+        acsessoryService.save(ultrasonicAcsessory);
 
 
         PatientService patientService = new PatientService();

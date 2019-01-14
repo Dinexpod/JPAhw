@@ -24,6 +24,10 @@ public class Test {
     private Type type;
     @Column(name = "date")
     private LocalDateTime localDate;
+    @Column
+    private String nameOfPatient;
+    @Column
+    private String nameOfAcsessory;
 
     public enum Type {
         FOR_KID,
@@ -39,10 +43,26 @@ public class Test {
     public Test() {
     }
 
-    public Test(String name, Type type, LocalDateTime date) {
+    public Test(String name, Type type, LocalDateTime localDate) {
         this.name = name;
         this.type = type;
-        this.localDate = date;
+        this.localDate = localDate;
+    }
+
+    public String getNameOfAcsessory() {
+        return nameOfAcsessory;
+    }
+
+    public void setNameOfAcsessory(String nameOfAcsessory) {
+        this.nameOfAcsessory = nameOfAcsessory;
+    }
+
+    public String getNameOfPatient() {
+        return nameOfPatient;
+    }
+
+    public void setNameOfPatient(String nameOfPatient) {
+        this.nameOfPatient = nameOfPatient;
     }
 
     public Integer getId() {

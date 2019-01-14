@@ -3,6 +3,7 @@ package mate.academy.jpahw.dao.impl;
 import mate.academy.jpahw.dao.DeviceDao;
 import mate.academy.jpahw.dao.TestDao;
 import mate.academy.jpahw.dao.abstractDao.AbstractDao;
+import mate.academy.jpahw.models.acsessory.Acsessory;
 import mate.academy.jpahw.models.devices.Device;
 import mate.academy.jpahw.models.devices.Photometer;
 import mate.academy.jpahw.models.patients.Patient;
@@ -39,5 +40,13 @@ public class DeviceDaoImpl extends AbstractDao<Device, Long> implements DeviceDa
     @Override
     public void deleteById(Long aLong) {
         super.deleteById(aLong);
+    }
+
+    @Override
+    public Test doTest(Test test, Patient patient, Acsessory acsessory) {
+        System.out.println("Doing test for " + patient.getName() + " by " + acsessory.getName() + " acsessory ...");
+        test.setNameOfPatient(patient.getName());
+        test.setNameOfAcsessory(acsessory.getName());
+        return test;
     }
 }

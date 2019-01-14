@@ -39,9 +39,4 @@ public class TestServiceImpl implements TestService {
     public void deleteById(Long id) {
         this.testDao.deleteById(id);
     }
-
-    @Override
-    public Test createTest(Test test) {
-        return  this.testDao.crea;
-    }
 }

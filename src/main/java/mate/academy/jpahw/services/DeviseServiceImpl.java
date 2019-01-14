@@ -1,6 +1,7 @@
 package mate.academy.jpahw.services;
 
 import mate.academy.jpahw.dao.DeviceDao;
+import mate.academy.jpahw.models.acsessory.Acsessory;
 import mate.academy.jpahw.models.devices.Device;
 import mate.academy.jpahw.models.patients.Patient;
 import mate.academy.jpahw.models.tests.Test;
@@ -40,7 +41,7 @@ public class DeviseServiceImpl implements DeviseService {
     }
 
     @Override
-    public Test doTest(Test test, Patient patient) {
-        return this.deviceDao.doTest(test, patient);
+    public Test doTest(Test test, Patient patient, Acsessory acsessory) {
+        return this.deviceDao.doTest(test, patient, acsessory);
     }
 }
