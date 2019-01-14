@@ -7,6 +7,9 @@ import javax.persistence.Persistence;
 public class EntityManagerHolder {
     protected static EntityManager em;
 
+    private EntityManagerHolder() {
+    }
+
     public static EntityManager getEm() {
         return em;
     }
