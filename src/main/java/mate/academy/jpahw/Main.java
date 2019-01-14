@@ -85,8 +85,8 @@ public class Main {
                 UltrasonicAcsessory.UAcsessorySize.BIG,
                 UltrasonicAcsessory.UAcsessoryState.UNAPPLIED);
 
-
-
+        TestService testService = new TestServiceImpl(new TestDaoImpl(em, Test.class));
+        testService.
         TestDao testDao = new TestDaoImpl(em, Test.class);
         DeviceDao deviceDao =  new DeviceDaoImpl(em, Device.class);
         AcsessoryDao acsessoryDao = new AcsessoryDaoImpl(em, Acsessory.class);
