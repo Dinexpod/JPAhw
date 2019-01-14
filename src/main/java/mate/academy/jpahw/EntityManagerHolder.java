@@ -11,7 +11,7 @@ public class EntityManagerHolder {
         return em;
     }
 
-    static  {
+    static {
         EntityManagerFactory emf = Persistence
                 .createEntityManagerFactory("PatientPU");
         em = emf.createEntityManager();

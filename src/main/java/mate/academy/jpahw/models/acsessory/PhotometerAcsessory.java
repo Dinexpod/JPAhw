@@ -1,13 +1,7 @@
 package mate.academy.jpahw.models.acsessory;
 
-import mate.academy.jpahw.models.devices.Photometer;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,9 +13,6 @@ public class PhotometerAcsessory extends Acsessory {
     private PAcsessorySize size;
     @Column
     private PAcsessoryState state;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "photometer_id")
-    private Photometer ownerPhotometer;
 
     public enum PAcsessoryState {
         APPLIED,
@@ -74,7 +65,6 @@ public class PhotometerAcsessory extends Acsessory {
                 "cost=" + cost +
                 ", size=" + size +
                 ", state=" + state +
-                ", ownerPhotometer=" + ownerPhotometer +
                 '}';
     }
 }

@@ -3,7 +3,6 @@ package mate.academy.jpahw.dao.impl;
 import mate.academy.jpahw.dao.AcsessoryDao;
 import mate.academy.jpahw.dao.abstractDao.AbstractDao;
 import mate.academy.jpahw.models.acsessory.Acsessory;
-import mate.academy.jpahw.services.AcsessoryService;
 
 import javax.persistence.EntityManager;
 import java.util.List;

@@ -1,36 +1,21 @@
 package mate.academy.jpahw;
 
-import mate.academy.jpahw.dao.AcsessoryDao;
-import mate.academy.jpahw.dao.DeviceDao;
-import mate.academy.jpahw.dao.TestDao;
-import mate.academy.jpahw.dao.impl.AcsessoryDaoImpl;
-import mate.academy.jpahw.dao.impl.DeviceDaoImpl;
-import mate.academy.jpahw.dao.impl.TestDaoImpl;
-import mate.academy.jpahw.models.acsessory.Acsessory;
 import mate.academy.jpahw.models.acsessory.PhotometerAcsessory;
 import mate.academy.jpahw.models.acsessory.UltrasonicAcsessory;
-import mate.academy.jpahw.models.devices.Device;
 import mate.academy.jpahw.models.devices.Photometer;
 import mate.academy.jpahw.models.devices.UltrasonicDevice;
 import mate.academy.jpahw.models.patients.Patient;
-import mate.academy.jpahw.models.patients.PatientService;
 import mate.academy.jpahw.models.tests.BloodTest;
 import mate.academy.jpahw.models.tests.SkinTest;
 import mate.academy.jpahw.models.tests.Test;
 import mate.academy.jpahw.services.AcsessoryService;
-import mate.academy.jpahw.services.AcsessoryServiceImpl;
 import mate.academy.jpahw.services.DeviseService;
-import mate.academy.jpahw.services.DeviseServiceImpl;
+import mate.academy.jpahw.services.FactoryService;
+import mate.academy.jpahw.services.PatientService;
 import mate.academy.jpahw.services.TestService;
-import mate.academy.jpahw.services.TestServiceImpl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.time.LocalDateTime;
-import java.util.List;
 
-import static mate.academy.jpahw.EntityManagerHolder.em;
 import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessorySize.BIG;
 import static mate.academy.jpahw.models.acsessory.PhotometerAcsessory.PAcsessoryState.UNAPPLIED;
 
@@ -52,9 +37,9 @@ public class Main {
                 "kjefh",
                 BloodTest.State.EXECUTED);
 
-        Patient patient = new Patient("Tony", "Lev");
+        Patient tony = new Patient("Tony", "Lev");
 
-        Patient patient1 = new Patient("Jack", "Bond");
+        Patient jack = new Patient("Jack", "Bond");
 
         Photometer photometr = new Photometer(
                 "Photometer",
@@ -88,29 +73,45 @@ public class Main {
                 UltrasonicAcsessory.UAcsessorySize.BIG,
                 UltrasonicAcsessory.UAcsessoryState.UNAPPLIED);
 
-        TestService testService =
-                new TestServiceImpl(new TestDaoImpl(em, Test.class));
-        DeviseService deviseService =
-                new DeviseServiceImpl(new DeviceDaoImpl(em, Device.class));
-        AcsessoryService acsessoryService =
-                new AcsessoryServiceImpl(new AcsessoryDaoImpl(em, Acsessory.class));
+//      CREATE ALL NEEDS SERVICES (factory creates examples classes)
+        FactoryService factory = new FactoryService();
+
+        TestService testService = factory.getTestService();
+        DeviseService deviseService = factory.deviseService();
+        AcsessoryService acsessoryService = factory.acsessoryService();
+        PatientService patientService = factory.patientService();
 
 //      SAVE ALL NEEDS INSTRUMENTS AND PERSONS
         testService.save(skinTest);
+
         testService.save(bloodTest);
 
         deviseService.save(photometr);
+
         deviseService.save(ultrasonicDevice);
 
         acsessoryService.save(photometerAcsessory);
+
         acsessoryService.save(ultrasonicAcsessory);
 
+        patientService.save(tony);
 
-        PatientService patientService = new PatientService();
-        List<Test> tests = patientService.getAllTests();
-        List<Test> tests1 = patientService
-                .getAllTestsInDateRange(LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(1));
-        System.out.println(tests);
-        System.out.println(tests1);
+        patientService.save(jack);
+
+//      DO TESTS FROM SOME PATIENTS USING DEVICE AND IT'S EQUIPMENT END OUT INFO ABOUT TESTS
+        Test skinTestTmp = deviseService.doTest(skinTest, tony, ultrasonicAcsessory);
+        System.out.println(skinTestTmp.toString());
+
+        Test bloodTestTmp = deviseService.doTest(bloodTest, jack, photometerAcsessory);
+        System.out.println(bloodTestTmp.toString());
+
+//      DO METHODS "GET ALL TESTS" AND "GET ALL TESTS BY SOME DATA RANGE"
+        System.out.println("ALL TESTS");
+        patientService.getAllTests().stream().forEach(System.out::println);
+
+        System.out.println("DATA RANGE TESTS ");
+        patientService.getAllTestsInDateRange
+                (LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(1))
+                .stream().forEach(System.out::println);
     }
 }

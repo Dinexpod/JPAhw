@@ -2,7 +2,9 @@ package mate.academy.jpahw.services;
 
 import mate.academy.jpahw.dao.PatientDao;
 import mate.academy.jpahw.models.patients.Patient;
+import mate.academy.jpahw.models.tests.Test;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class PatientServiceImpl implements PatientService {
@@ -35,5 +37,15 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void deleteById(Long id) {
         this.patientDao.deleteById(id);
+    }
+
+    @Override
+    public List<Test> getAllTestsInDateRange(LocalDateTime from, LocalDateTime to) {
+        return this.patientDao.getAllTestsInDateRange(from, to);
+    }
+
+    @Override
+    public List<Test> getAllTests() {
+        return this.patientDao.getAllTests();
     }
 }
