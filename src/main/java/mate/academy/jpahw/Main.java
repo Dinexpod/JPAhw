@@ -92,7 +92,7 @@ public class Main {
         acsessoryService.save(ultrasonicAcsessory);
 
         patientService.save(tony);
-//
+
         patientService.save(jack);
 
 //      DO TESTS FROM SOME PATIENTS USING DEVICE AND IT'S EQUIPMENT END OUT INFO ABOUT TESTS
